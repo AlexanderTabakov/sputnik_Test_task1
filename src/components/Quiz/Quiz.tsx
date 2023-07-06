@@ -31,13 +31,13 @@ const questions = [
 ];
 
 const Quiz: React.FC = () => {
-    const [question, setQuestion] = useState(0);
+    // const [currentQuestion, setCurrentQuestion] = useState(0);
     // const [score, setScore] = useState(0);
     //
-    const handleAnswer = (answer: string) => {
-        if (answer === questions[question].answer) {
-            console.log('test');
-        }
+    // const handleAnswer = (answer: string) => {
+    //     if (answer === questions[currentQuestion].answer) {
+    //         setScore(score + 1);
+    //     }
     //
     //     const nextQuestion = currentQuestion + 1;
     //     if (nextQuestion < questions.length) {
