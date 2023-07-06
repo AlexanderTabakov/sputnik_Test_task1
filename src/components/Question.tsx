@@ -4,11 +4,11 @@ interface Props {
     question: string;
     choices: string[];
     answer: string;
-    // onAnswer: (answer: string) => void;
+    onAnswer: (answer: string) => void;
 }
 
 const Question: React.FC<Props> = (
-    { question, choices, answer }) => {
+    { question, choices, answer,onAnswer }) => {
     return (
 
         <div className="d-flex
@@ -20,7 +20,7 @@ const Question: React.FC<Props> = (
 
             {choices.map((choice) => (
                 <form action="">
-                    <input type="checkbox"/>{choice}
+                    <input type="checkbox" onClick={() => onAnswer(choice)}/>{choice}
                 </form>
             ))}
 
