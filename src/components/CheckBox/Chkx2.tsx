@@ -6,7 +6,7 @@ import type { CheckboxValueType } from 'antd/es/checkbox/Group';
 const answers:Array<any> = []
 const onChange = (checkedValues: CheckboxValueType[]) => {
     console.log('checked = ', checkedValues);
-    answers.push(checkedValues)
+    answers.push(...checkedValues)
     console.log(answers)
 
 };
