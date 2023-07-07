@@ -1,4 +1,6 @@
 import React from 'react';
+import Checkbox1 from "components/CheckBox/Chekcbox1";
+import CheckboxesAntd from "components/CheckBox/Chekbox";
 
 interface Props {
     question: string;
@@ -11,27 +13,30 @@ const Question: React.FC<Props> = (
     { question, choices, answer,onAnswer }) => {
     return (
 
-        <div className="d-flex
+        <>
+
+            <div className="d-flex
                         justify-content-center
                         align-center
                         text-center
                         flex-column">
-            <h2 className="">{question}</h2>
+                <h2 className="">{question}</h2>
 
-            {choices.map((choice) => (
-                <form action="">
-                    <input type="checkbox" onClick={() => onAnswer(choice)}/>{choice}
-                </form>
-            ))}
+                {choices.map((choice) => (
+                    <input type='checkbox' value={choice} />
+                ))}
 
-            {/*<div className="">*/}
-            {/*    {choices.map((choice) => (*/}
-            {/*        <button className="btn btn-success m-2"*/}
-            {/*            onClick={() => onAnswer(choice)}>*/}
-            {/*            {choice}</button>*/}
-            {/*    ))}*/}
-            {/*</div>*/}
-        </div>
+
+                {/*{choices.map((choice) => (*/}
+                {/*    <Checkbox1 children={choice} key={choice}/>*/}
+                {/*))}*/}
+
+                {/*<CheckboxesAntd />*/}
+
+
+
+            </div>
+        </>
     );
 };
 
