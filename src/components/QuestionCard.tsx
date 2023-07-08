@@ -30,7 +30,7 @@ const QuestionCard: React.FC<Props> = (
                 <h1>{question}</h1>
 
                 {choices.map((choice)=>
-                    <Checkbox disabled={false} key={choice} value={choice} onChange={changeHandler}>{choice}</Checkbox>
+                    <Checkbox key={choice} value={choice} onChange={changeHandler}>{choice}</Checkbox>
                 )}
 
 

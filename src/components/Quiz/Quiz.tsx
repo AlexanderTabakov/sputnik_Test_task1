@@ -1,6 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import Question from '../Question';
-import question from "../Question";
 import QuestionCard from "components/QuestionCard";
 import Button from "components/Button/Button";
 import {useDispatch, useSelector} from "react-redux";
