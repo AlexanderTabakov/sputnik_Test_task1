@@ -1,8 +1,8 @@
 import React from "react";
 
-const Button:React.FC = ({children})=> {
+const Button:React.FC = ({children}, onclick)=> {
     return (
-        <button>{children}</button>
+        <button onClick={onclick}>{children}</button>
     )
 }
 

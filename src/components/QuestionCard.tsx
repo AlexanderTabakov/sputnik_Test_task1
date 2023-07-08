@@ -15,9 +15,6 @@ const QuestionCard: React.FC<Props> = (
 
     const dispatch = useDispatch()
     const answers = useSelector((state: any) => state.answer)
-    const addToAnswerList = () => {
-        dispatch({type: "ADD_TO_ANSWERS_LIST" , payload: choices})
-    }
 
     const changeHandler = (e:any) => {
         if(!e.target.checked){
@@ -33,7 +30,7 @@ const QuestionCard: React.FC<Props> = (
                 <h1>{question}</h1>
 
                 {choices.map((choice)=>
-                    <Checkbox key={answer} value={choice} onChange={changeHandler}>{choice}</Checkbox>
+                    <Checkbox disabled={false} key={choice} value={choice} onChange={changeHandler}>{choice}</Checkbox>
                 )}
 
 

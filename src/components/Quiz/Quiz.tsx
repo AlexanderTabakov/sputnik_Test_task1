@@ -4,6 +4,7 @@ import question from "../Question";
 import QuestionCard from "components/QuestionCard";
 import Button from "components/Button/Button";
 import {useDispatch, useSelector} from "react-redux";
+import {useTypedSelector} from "hooks/useTypedSelector";
 
 const questions = [
     {
@@ -34,7 +35,7 @@ const questions = [
         id: 5,
         question: 'Какая Столица Германии',
         choices: ['Берлин', 'Штутгард', 'Кельн'],
-        answer: 'Берилн',
+        answer: 'Берлин',
     },
     {
         id: 6,
@@ -57,11 +58,26 @@ const questions = [
 ];
 
 
+const correctAnswers:string[] = ['Париж', 'Москва', 'Астана', 'Вашингтон', 'Берлин', 'Анкара', 'Вадуц', 'Все супер, учиться надо было лучше' ]
+
+
 const Quiz: React.FC = () => {
 
+    const {answers} = useTypedSelector(state => state.add)
+    console.log(answers)
 
-    // const dispatch = useDispatch()
-    // const answers = useSelector((state: any) => state.answer)
+    const _ = require('LoDash');
+
+    var common = _.intersection(answers, correctAnswers);
+    console.log("The common elements are: " + common);
+    console.log(common.length)
+
+    const result = () => {
+        alert( `Колличество правильных ответов ${common.length}`)
+        alert(`Колличество неправильных ответов ${correctAnswers.length - common.length}`)
+    }
+
+
 
 
     return (
@@ -76,20 +92,13 @@ const Quiz: React.FC = () => {
                         answer={answer}
 
                     />
-
                 )}
-                {/*{questions.map(({id, question, choices, answer}) =>*/}
-                {/*    <Question*/}
-                {/*        key={id}*/}
-                {/*        question={question}*/}
-                {/*        choices={choices}*/}
-                {/*        answer={answer}*/}
-                {/*        onAnswer={handleAnswer}*/}
-                {/*    />*/}
 
-                {/*)}*/}
             </div>
-            <Button children={'TEST'}/>
+
+            <button onClick={result}>TEST</button>
+            {/*<Button children={'TEST'}/>*/}
+
         </div>
     )
 }

@@ -21,7 +21,7 @@ export const addToAnswersList = (state = defaultState, action:any) => {
     case REMOVE_FROM_ANSWERS_LIST:
         return {
             ...state,
-            activeIcons:state.answers.filter(e => e != action.payload)
+            answers:state.answers.filter(e => e !== action.payload)
         }
     default:
         return state
