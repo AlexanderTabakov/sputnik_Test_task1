@@ -5,13 +5,20 @@ import {addToAnswersList} from "store/redusers/answers";
 import {Checkbox} from "antd";
 import Chekbox from "components/CheckBox/Chekbox";
 
-interface Props {
+// interface Props {
+//     question: string;
+//     choices: string[];
+//     answer: string;
+// }
+
+interface ITest {
     question: string;
     choices: string[];
     answer: string;
+    isDisabled:boolean
 }
-const QuestionCard: React.FC<Props> = (
-    { question, choices, answer }) => {
+const QuestionCard: React.FC<ITest> = (
+    { question, choices, answer, isDisabled }) => {
 
     const dispatch = useDispatch()
     const answers = useSelector((state: any) => state.answer)
@@ -30,7 +37,7 @@ const QuestionCard: React.FC<Props> = (
                 <h1>{question}</h1>
 
                 {choices.map((choice)=>
-                    <Checkbox key={choice} value={choice} onChange={changeHandler}>{choice}</Checkbox>
+                    <Checkbox disabled={isDisabled} key={choice} value={choice} onChange={changeHandler}>{choice}</Checkbox>
                 )}
 
 

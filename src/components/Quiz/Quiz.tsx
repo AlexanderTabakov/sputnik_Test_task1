@@ -3,6 +3,7 @@ import QuestionCard from "components/QuestionCard";
 import Button from "components/Button/Button";
 import {useDispatch, useSelector} from "react-redux";
 import {useTypedSelector} from "hooks/useTypedSelector";
+import { Pagination } from 'antd';
 
 const questions = [
     {
@@ -61,6 +62,8 @@ const correctAnswers:string[] = ['Париж', 'Москва', 'Астана', '
 
 const Quiz: React.FC = () => {
 
+
+
     const {answers} = useTypedSelector(state => state.add)
     console.log(answers)
 
@@ -73,6 +76,7 @@ const Quiz: React.FC = () => {
     const result = () => {
         alert( `Колличество правильных ответов ${common.length}`)
         alert(`Колличество неправильных ответов ${correctAnswers.length - common.length}`)
+        return true
     }
 
 
@@ -80,6 +84,7 @@ const Quiz: React.FC = () => {
 
     return (
         <div>
+            <Pagination defaultCurrent={1} total={3} />;
 
             <div>
                 {questions.map(({id, question, choices, answer}) =>
@@ -88,6 +93,7 @@ const Quiz: React.FC = () => {
                         question={question}
                         choices={choices}
                         answer={answer}
+                        isDisabled={false}
 
                     />
                 )}
