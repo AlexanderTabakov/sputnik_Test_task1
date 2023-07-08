@@ -3,61 +3,65 @@ import Question from '../Question';
 import question from "../Question";
 import QuestionCard from "components/QuestionCard";
 import Button from "components/Button/Button";
+import {useDispatch, useSelector} from "react-redux";
 
 const questions = [
     {
         id: 1,
         question: 'Какая столица Франции? 1',
-        choices: ['Париж', 'Бобруйск', 'Москва'],
+        choices: ['Париж', 'Бобруйск', 'Москвабад'],
         answer: 'Париж',
     },
     {
         id: 2,
-        question: 'Какая столица России 2',
-        choices: ['Бобруйск же', 'Москвабад', 'Малые плешки'],
-        answer: 'Москвабад',
+        question: 'Какая столица России',
+        choices: ['Бобруйск же', 'Москва', 'Васюки'],
+        answer: 'Москва',
     },
     {
         id: 3,
-        question: 'Какая столица России 3',
-        choices: ['Бобруйск же', 'Москвабад', 'Малые плешки'],
-        answer: 'Москвабад',
+        question: 'Какая столица Казахстана',
+        choices: ['Нур-Султан', 'Астана', 'Малые плешки'],
+        answer: 'Астана',
     },
     {
         id: 4,
-        question: 'Какая столица России 4',
-        choices: ['Бобруйск же', 'Москвабад', 'Малые плешки'],
-        answer: 'Москвабад',
+        question: 'Какая столица АСАШАЙ',
+        choices: ['Нью-Йорк', 'Вашингтон', 'Лос-Анджелес'],
+        answer: 'Вашингтон',
     },
     {
         id: 5,
-        question: 'Какая столица России 5',
-        choices: ['Бобруйск же', 'Москвабад', 'Малые плешки'],
-        answer: 'Москвабад',
+        question: 'Какая Столица Германии',
+        choices: ['Берлин', 'Штутгард', 'Кельн'],
+        answer: 'Берилн',
     },
     {
         id: 6,
-        question: 'Какая столица России 6',
-        choices: ['Бобруйск же', 'Москвабад', 'Малые плешки'],
-        answer: 'Москвабад',
+        question: 'Какая столица Турции',
+        choices: ['Стамбул', 'Анкара', 'Александрия'],
+        answer: 'Анкара',
     },
     {
         id: 7,
-        question: 'Какая столица России 7',
-        choices: ['Бобруйск же', 'Москвабад', 'Малые плешки'],
-        answer: 'Москвабад',
+        question: 'Какая столица Лихтенштейна',
+        choices: ['Вадуц', 'Шан', 'Алмата'],
+        answer: 'Вадуц',
     },
     {
         id: 8,
-        question: 'Какая столица России 8',
-        choices: ['Бобруйск же', 'Москвабад', 'Малые плешки'],
-        answer: 'Москвабад',
+        question: 'Что больше всего не нравится во фронте',
+        choices: ['TS', 'JS', 'Все супер, учиться надо было лучше'],
+        answer: 'Все супер, учиться надо было лучше',
     },
 ];
 
 
 const Quiz: React.FC = () => {
 
+
+    // const dispatch = useDispatch()
+    // const answers = useSelector((state: any) => state.answer)
 
 
     return (
@@ -70,6 +74,7 @@ const Quiz: React.FC = () => {
                         question={question}
                         choices={choices}
                         answer={answer}
+
                     />
 
                 )}
