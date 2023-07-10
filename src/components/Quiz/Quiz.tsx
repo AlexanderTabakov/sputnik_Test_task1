@@ -3,7 +3,9 @@ import QuestionCard from "components/QuestionCard";
 import Button from "components/Button/Button";
 import {useDispatch, useSelector} from "react-redux";
 import {useTypedSelector} from "hooks/useTypedSelector";
-import { Pagination } from 'antd';
+import {Pagination, Table} from 'antd';
+import { Card } from 'antd';
+import {Tab} from "@mui/material";
 
 const questions = [
     {
@@ -69,40 +71,71 @@ const Quiz: React.FC = () => {
 
     const _ = require('LoDash');
 
-    var common = _.intersection(answers, correctAnswers);
+    const common = _.intersection(answers, correctAnswers);
     console.log("The common elements are: " + common);
     console.log(common.length)
+
+    const [isChecked, setIsChecked] = useState(false);
+    const handleCheckboxChange = () => {
+        setIsChecked(!isChecked);
+    }
+
+    const [activeCheckbox, setActiveCheckbox] = useState(null);
+
+
 
     const result = () => {
         alert( `Колличество правильных ответов ${common.length}`)
         alert(`Колличество неправильных ответов ${correctAnswers.length - common.length}`)
-        return true
+        handleCheckboxChange()
     }
 
-
-
-
     return (
+
         <div>
-            <Pagination defaultCurrent={1} total={3} />;
+            <>
 
-            <div>
-                {questions.map(({id, question, choices, answer}) =>
-                    <QuestionCard
-                        key={id}
-                        question={question}
-                        choices={choices}
-                        answer={answer}
-                        isDisabled={false}
+                <Pagination simple pageSize={1} defaultCurrent={1} total={50} />
+                {/*<Pagination*/}
+                {/*    total={5}*/}
+                {/*    showSizeChanger*/}
+                {/*    showQuickJumper*/}
+                {/*    showTotal={(total) => `Total ${total} items`}*/}
+                {/*/>*/}
 
-                    />
-                )}
 
-            </div>
+                <div>
+                    {questions.map(({id, question, choices, answer}) =>
+                        <QuestionCard
+                            key={id}
+                            question={question}
+                            choices={choices}
+                            answer={answer}
+                            // isDisabled={!result}
+                            isDisabled={isChecked}
 
-            <button onClick={result}>TEST</button>
-            {/*<Button children={'TEST'}/>*/}
+                        />
+                    )}
+                </div>
 
+                <div>
+                    {questions.map(({id, question, choices, answer}) =>
+                        <QuestionCard
+                            key={id}
+                            question={question}
+                            choices={choices}
+                            answer={answer}
+                            // isDisabled={!result}
+                            isDisabled={isChecked}
+
+                        />
+                    )}
+                </div>
+
+                <button onClick={result}>TEST</button>
+                {/*<Button children={'TEST'}/>*/}
+
+            </>
         </div>
     )
 }
