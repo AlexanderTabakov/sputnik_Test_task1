@@ -2,8 +2,9 @@ import React, {useState} from "react";
 import Chk2 from "components/CheckBox/Chkx2";
 import {useDispatch, useSelector} from "react-redux";
 import {addToAnswersList} from "store/redusers/answers";
-import {Checkbox} from "antd";
+import {Checkbox,Card} from "antd";
 import Chekbox from "components/CheckBox/Chekbox";
+import Questions from "db/questions";
 
 // interface Props {
 //     question: string;
@@ -16,16 +17,19 @@ export interface ITest {
     choices: string[];
     answer: string;
     isDisabled:boolean
+    isChecked?:boolean
 }
 
 
 const QuestionCard: React.FC<ITest> = (
-    { question, choices, answer, isDisabled }) => {
+    { question, choices, answer, isDisabled ,isChecked }) => {
 
 
 
     const dispatch = useDispatch()
     const answers = useSelector((state: any) => state.answer)
+
+
 
 
     const changeHandler = (e:any) => {
@@ -41,25 +45,17 @@ const QuestionCard: React.FC<ITest> = (
     }
     return (
         <>
-            {/*<div>*/}
-            {/*    <h1>{question}</h1>*/}
-
-            {/*    {choices.map((choice)=>*/}
-            {/*        <Checkbox disabled={isDisabled}  key={choice} value={choice} onChange={changeHandler}>{choice}</Checkbox>*/}
-            {/*    )}*/}
 
 
-            {/*</div>*/}
-
-            <div>
+            <Card>
                 <h1>{question}</h1>
-
                 {choices.map((choice)=>
-                    <Checkbox disabled={isDisabled}  key={choice} value={choice} onChange={changeHandler}>{choice}</Checkbox>
+                    <Checkbox title={question}  disabled={isDisabled}  key={choice} value={choice} onChange={changeHandler}>{choice}</Checkbox>
                 )}
 
+            </Card>
 
-            </div>
+
         </>
     )
 }

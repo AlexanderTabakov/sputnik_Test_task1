@@ -4,13 +4,14 @@ import Button from "components/Button/Button";
 import {useDispatch, useSelector} from "react-redux";
 import {useTypedSelector} from "hooks/useTypedSelector";
 import {Pagination, Table} from 'antd';
+import CountDown from "components/Timer/Timer";
 import { Card } from 'antd';
 import {Tab} from "@mui/material";
 
 const questions = [
     {
         id: 1,
-        question: 'Какая столица Франции? 1',
+        question: 'Какая столица Франции?',
         choices: ['Париж', 'Бобруйск', 'Москвабад'],
         answer: 'Париж',
     },
@@ -75,14 +76,11 @@ const Quiz: React.FC = () => {
     console.log("The common elements are: " + common);
     console.log(common.length)
 
+
     const [isChecked, setIsChecked] = useState(false);
     const handleCheckboxChange = () => {
         setIsChecked(!isChecked);
     }
-
-    const [activeCheckbox, setActiveCheckbox] = useState(null);
-
-
 
     const result = () => {
         alert( `Колличество правильных ответов ${common.length}`)
@@ -90,36 +88,20 @@ const Quiz: React.FC = () => {
         handleCheckboxChange()
     }
 
+    const outOfTime = setTimeout(result, 600000)
+
     return (
 
         <div>
             <>
 
-                <Pagination simple pageSize={1} defaultCurrent={1} total={50} />
-                {/*<Pagination*/}
-                {/*    total={5}*/}
-                {/*    showSizeChanger*/}
-                {/*    showQuickJumper*/}
-                {/*    showTotal={(total) => `Total ${total} items`}*/}
-                {/*/>*/}
+                <CountDown hours={0} minutes={10} seconds={0} />
 
+                <Pagination simple pageSize={5} defaultCurrent={1} total={questions.length}/>
 
                 <div>
                     {questions.map(({id, question, choices, answer}) =>
-                        <QuestionCard
-                            key={id}
-                            question={question}
-                            choices={choices}
-                            answer={answer}
-                            // isDisabled={!result}
-                            isDisabled={isChecked}
 
-                        />
-                    )}
-                </div>
-
-                <div>
-                    {questions.map(({id, question, choices, answer}) =>
                         <QuestionCard
                             key={id}
                             question={question}
@@ -133,7 +115,8 @@ const Quiz: React.FC = () => {
                 </div>
 
                 <button onClick={result}>TEST</button>
-                {/*<Button children={'TEST'}/>*/}
+
+
 
             </>
         </div>
