@@ -11,6 +11,7 @@ import {store} from "store";
 const root = (
     <BrowserRouter>
         <Provider store={store}>
+
             <Quiz/>
         </Provider>
     </BrowserRouter>

@@ -29,6 +29,5 @@ export const addToAnswersList = (state = defaultState, action:any) => {
     }
 }
 
-
 export const addToAnswerListAction = (payload:any) => ({type: addToAnswersList, payload})
 

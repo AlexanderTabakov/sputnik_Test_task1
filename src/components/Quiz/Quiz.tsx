@@ -1,66 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import QuestionCard from "components/QuestionCard";
-import Button from "components/Button/Button";
 import {useDispatch, useSelector} from "react-redux";
 import {useTypedSelector} from "hooks/useTypedSelector";
 import {Pagination, Table} from 'antd';
 import CountDown from "components/Timer/Timer";
 import { Card } from 'antd';
 import {Tab} from "@mui/material";
-
-const questions = [
-    {
-        id: 1,
-        question: 'Какая столица Франции?',
-        choices: ['Париж', 'Бобруйск', 'Москвабад'],
-        answer: 'Париж',
-    },
-    {
-        id: 2,
-        question: 'Какая столица России',
-        choices: ['Бобруйск же', 'Москва', 'Васюки'],
-        answer: 'Москва',
-    },
-    {
-        id: 3,
-        question: 'Какая столица Казахстана',
-        choices: ['Нур-Султан', 'Астана', 'Малые плешки'],
-        answer: 'Астана',
-    },
-    {
-        id: 4,
-        question: 'Какая столица АСАШАЙ',
-        choices: ['Нью-Йорк', 'Вашингтон', 'Лос-Анджелес'],
-        answer: 'Вашингтон',
-    },
-    {
-        id: 5,
-        question: 'Какая Столица Германии',
-        choices: ['Берлин', 'Штутгард', 'Кельн'],
-        answer: 'Берлин',
-    },
-    {
-        id: 6,
-        question: 'Какая столица Турции',
-        choices: ['Стамбул', 'Анкара', 'Александрия'],
-        answer: 'Анкара',
-    },
-    {
-        id: 7,
-        question: 'Какая столица Лихтенштейна',
-        choices: ['Вадуц', 'Шан', 'Алмата'],
-        answer: 'Вадуц',
-    },
-    {
-        id: 8,
-        question: 'Что больше всего не нравится во фронте',
-        choices: ['TS', 'JS', 'Все супер, учиться надо было лучше'],
-        answer: 'Все супер, учиться надо было лучше',
-    },
-];
-
-
-const correctAnswers:string[] = ['Париж', 'Москва', 'Астана', 'Вашингтон', 'Берлин', 'Анкара', 'Вадуц', 'Все супер, учиться надо было лучше' ]
+import Auth from "components/Auth/Auth";
+import questions from "db/questions";
+import {correctAnswers} from "db/correctAnswers";
 
 
 const Quiz: React.FC = () => {
@@ -88,12 +36,14 @@ const Quiz: React.FC = () => {
         handleCheckboxChange()
     }
 
-    const outOfTime = setTimeout(result, 600000)
+    setTimeout(result, 600000)
 
     return (
 
         <div>
             <>
+
+                <Auth/>
 
                 <CountDown hours={0} minutes={10} seconds={0} />
 

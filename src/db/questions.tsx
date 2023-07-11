@@ -1,58 +1,51 @@
 const questions = [
     {
         id: 1,
-        question: 'What is the capital of France? 1',
-        choices: ['Paris', 'London', 'New York'],
-        answer: 'Paris',
+        question: 'Какая столица Франции?',
+        choices: ['Париж', 'Бобруйск', 'Москвабад'],
+        answer: 'Париж',
     },
     {
         id: 2,
-        question: 'What is the largest planet in our solar system? 2',
-        choices: ['Mars', 'Jupiter', 'Venus'],
-        answer: 'Jupiter',
+        question: 'Какая столица России',
+        choices: ['Бобруйск же', 'Москва', 'Васюки'],
+        answer: 'Москва',
     },
     {
         id: 3,
-        question: 'What is the boiling point of water? 3',
-        choices: ['100°C', '0°C', '50°C'],
-        answer: '100°C',
+        question: 'Какая столица Казахстана',
+        choices: ['Нур-Султан', 'Астана', 'Малые плешки'],
+        answer: 'Астана',
     },
     {
         id: 4,
-        question: 'What is the largest planet in our solar system? 4',
-        choices: ['Mars', 'Jupiter', 'Venus'],
-        answer: 'Jupiter',
+        question: 'Какая столица АСАШАЙ',
+        choices: ['Нью-Йорк', 'Вашингтон', 'Лос-Анджелес'],
+        answer: 'Вашингтон',
     },
     {
         id: 5,
-        question: 'What is the boiling point of water? 5',
-        choices: ['100°C', '0°C', '50°C'],
-        answer: '100°C',
-    },{
+        question: 'Какая Столица Германии',
+        choices: ['Берлин', 'Штутгард', 'Кельн'],
+        answer: 'Берлин',
+    },
+    {
         id: 6,
-        question: 'What is the boiling point of water? 6',
-        choices: ['100°C', '0°C', '50°C'],
-        answer: '100°C',
-    },{
+        question: 'Какая столица Турции',
+        choices: ['Стамбул', 'Анкара', 'Александрия'],
+        answer: 'Анкара',
+    },
+    {
         id: 7,
-        question: 'What is the boiling point of water? 7',
-        choices: ['100°C', '0°C', '50°C'],
-        answer: '100°C',
-    },{
+        question: 'Какая столица Лихтенштейна',
+        choices: ['Вадуц', 'Шан', 'Алмата'],
+        answer: 'Вадуц',
+    },
+    {
         id: 8,
-        question: 'What is the boiling point of water? 8',
-        choices: ['100°C', '0°C', '50°C'],
-        answer: '100°C',
-    },{
-        id: 9,
-        question: 'What is the boiling point of water? 9',
-        choices: ['100°C', '0°C', '50°C'],
-        answer: '100°C',
-    },{
-        id: 10,
-        question: 'What is the boiling point of water? 10',
-        choices: ['100°C', '0°C', '50°C'],
-        answer: '100°C',
+        question: 'Что больше всего не нравится во фронте',
+        choices: ['TS', 'JS', 'Все супер, учиться надо было лучше'],
+        answer: 'Все супер, учиться надо было лучше',
     },
 ];
 export default questions;

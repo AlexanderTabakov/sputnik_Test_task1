@@ -42,10 +42,10 @@ const CountDown: React.FC<ITimer> = ({ hours = 0, minutes = 0, seconds = 0 }) =>
                 .toString()
                 .padStart(2, '0')}:${s.toString().padStart(2, '0')}`}</p>
             <div>{over ? "Time's up!" : ''}</div>
-            <button onClick={() => setPaused(!paused)}>
-                {paused ? 'Resume' : 'Pause'}
-            </button>
-            <button onClick={() => reset()}>Restart</button>
+            {/*<button onClick={() => setPaused(!paused)}>*/}
+            {/*    {paused ? 'Resume' : 'Pause'}*/}
+            {/*</button>*/}
+            {/*<button onClick={() => reset()}>Restart</button>*/}
         </div>
     );
 };

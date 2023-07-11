@@ -31,6 +31,16 @@ const QuestionCard: React.FC<ITest> = (
 
 
 
+    const [selected, setSelected] = useState(null);
+
+    function onChange(i:any) {
+        setSelected((prev:any) => (i === prev ? null : i));
+    }
+
+    function whatDidIPick() {
+        console.log(choices[selected] || 'nothing');
+    }
+
 
     const changeHandler = (e:any) => {
         if(!e.target.checked){
@@ -40,17 +50,17 @@ const QuestionCard: React.FC<ITest> = (
         dispatch({type:'ADD_TO_ANSWERS_LIST',payload:e.target.value })
 
 
-
-
     }
+
+
     return (
         <>
 
 
             <Card>
                 <h1>{question}</h1>
-                {choices.map((choice)=>
-                    <Checkbox title={question}  disabled={isDisabled}  key={choice} value={choice} onChange={changeHandler}>{choice}</Checkbox>
+                {choices.map((choice, i)=>
+                    <Checkbox title={question}  checked={i===selected} disabled={isDisabled}  key={choice} value={choice} onChange={()=>onChange(i)}>{choice}</Checkbox>
                 )}
 
             </Card>
