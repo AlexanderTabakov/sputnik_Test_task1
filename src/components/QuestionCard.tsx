@@ -40,13 +40,13 @@ const QuestionCard: React.FC<ITest> = (
 
 
     const changeHandler = (e:any) => {
+        e.preventDefault()
         if(!e.target.checked){
             dispatch({type:"REMOVE_FROM_ANSWERS_LIST",payload:e.target.value})
             return
         }
         dispatch({type:'ADD_TO_ANSWERS_LIST',payload:e.target.value })
 
-        // onChangeTest(i)
     }
 
 
@@ -57,7 +57,7 @@ const QuestionCard: React.FC<ITest> = (
             <Card>
                 <h1>{question}</h1>
                 {choices.map((choice, i)=>
-                    <Checkbox title={question}  checked={i===selected} disabled={isDisabled}  key={choice} value={choice}   onChange={()=>onChangeTest(i)}>{choice}</Checkbox>
+                    <Checkbox title={question}  checked={i===selected} disabled={isDisabled}  key={choice} value={choice}   onChange={(e)=>{onChangeTest(i); changeHandler(e)}}>{choice}</Checkbox>
                 )}
 
             </Card>
