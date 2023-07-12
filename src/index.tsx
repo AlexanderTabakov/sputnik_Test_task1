@@ -30,7 +30,7 @@ const router = createBrowserRouter([
     },
     {
         path: "/user",
-        element: <User/>,
+        element: <Quiz/>,
     },
 ]);
 
@@ -44,9 +44,9 @@ const router = createBrowserRouter([
 
 const root =
 (
-    <React.StrictMode>
+    <Provider store={store}>
         <RouterProvider router={router}/>
-    </React.StrictMode>
+    </Provider>
 );
 
 ReactDOM.render(
