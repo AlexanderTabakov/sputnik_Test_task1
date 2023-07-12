@@ -39,7 +39,7 @@ export default function Login() {
     return (
         <Container maxWidth="xs" sx={{mt: 2}}>
             <Typography variant="h5" component="h1" gutterBottom textAlign="center">
-                Login
+                ЗАЙТИ
             </Typography>
             {error && <Alert severity="error" sx={{my: 2}}>{error}</Alert>}
             <Box component="form" onSubmit={onSubmit}>
@@ -62,9 +62,9 @@ export default function Login() {
                     sx={{mt: 3}}
                     fullWidth
                 />
-                <Button variant="contained" type="submit" sx={{mt: 3}} fullWidth>Login</Button>
+                <Button variant="contained" type="submit" sx={{mt: 3}} fullWidth>ЗАХАДИ</Button>
                 <Box sx={{mt: 2}}>
-                    Don't have an account yet? <Link href="/register">Register</Link>
+                    Нет аккаунта? <Link href="/register">Регистрация</Link>
                 </Box>
             </Box>
         </Container>

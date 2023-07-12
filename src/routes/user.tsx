@@ -28,7 +28,7 @@ export default function User() {
     return (
         <Container maxWidth="xs" sx={{mt: 2}}>
             <Typography variant="h6" component="h1" textAlign="center" gutterBottom>
-                You're logged in as:
+                Вы зашли как:
             </Typography>
             <Typography variant="h5" component="h1" textAlign="center" gutterBottom>
                 {email}
@@ -37,7 +37,7 @@ export default function User() {
             {/*    Check the console for your (access/session) token.*/}
             {/*</Typography>*/}
             <Button variant="contained" color="error" onClick={onLogout} sx={{mt: 3}} fullWidth>
-                Log out
+                ВЫХАДИ
             </Button>
         </Container>
     )

@@ -10,6 +10,7 @@ import Auth from "components/Auth/Auth";
 import questions from "db/questions";
 import {correctAnswers} from "db/correctAnswers";
 import Chekbox from "components/CheckBox/Chekbox";
+import User from "routes/user";
 
 
 const Quiz: React.FC = () => {
@@ -83,7 +84,7 @@ const Quiz: React.FC = () => {
         <div>
             <>
 
-                <Auth/>
+                <User/>
 
                 <CountDown hours={0} minutes={10} seconds={0} />
 

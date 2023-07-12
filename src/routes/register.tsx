@@ -44,7 +44,7 @@ export default function Register() {
     return (
         <Container maxWidth="xs" sx={{mt: 2}}>
             <Typography variant="h5" component="h1" gutterBottom textAlign="center">
-                Register
+                Регистрация
             </Typography>
             {error && <Alert severity="error" sx={{my: 2}}>{error}</Alert>}
             <Box component="form" onSubmit={onSubmit}>
@@ -79,7 +79,7 @@ export default function Register() {
                 />
                 <Button variant="contained" type="submit" sx={{mt: 3}} fullWidth>Register</Button>
                 <Box sx={{mt: 2}}>
-                    Already have an account? <Link href="/login">Login</Link>
+                    Уже есть учетная запсиь? <Link href="/login">Залогинься</Link>
                 </Box>
             </Box>
         </Container>
