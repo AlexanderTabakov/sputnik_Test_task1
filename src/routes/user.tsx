@@ -2,12 +2,21 @@ import {Button, Container, Typography} from "@mui/material";
 import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {endSession, getSession, isLoggedIn} from "../storage/session";
+import {useDispatch, useSelector} from "react-redux";
+import {addToAnswersList} from "store/redusers/answers";
 
 export default function User() {
 
     let navigate = useNavigate();
 
     const [email, setEmail] = useState("");
+
+    const dispatch = useDispatch()
+    const onLogOutClickHandler = () => {
+        dispatch({type:'LOGOUT'})
+    }
+
+
 
     useEffect(() => {
         if (!isLoggedIn()) {
@@ -22,6 +31,7 @@ export default function User() {
 
     const onLogout = () => {
         endSession();
+        onLogOutClickHandler()
         navigate("/login");
     }
 

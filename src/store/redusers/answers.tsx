@@ -2,6 +2,9 @@
 
 export interface defaultState {
     answers: []
+    answerId?: number
+    correctAnswer?:any
+    wrongAnswer?: any
 }
 
 
@@ -14,6 +17,7 @@ export const addToAnswersList = (state = defaultState, action:any) => {
 
     const ADD_TO_ANSWERS_LIST="ADD_TO_ANSWERS_LIST"
     const REMOVE_FROM_ANSWERS_LIST="REMOVE_FROM_ANSWERS_LIST"
+    const LOGOUT = 'LOGOUT'
 
     switch (action.type) {
     case ADD_TO_ANSWERS_LIST:
@@ -23,6 +27,8 @@ export const addToAnswersList = (state = defaultState, action:any) => {
             ...state,
             answers:state.answers.filter(e => e !== action.payload)
         }
+    case LOGOUT:
+        return defaultState
     default:
         return state
 

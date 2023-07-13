@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import QuestionCard from "components/QuestionCard";
 import {useDispatch, useSelector} from "react-redux";
 import {useTypedSelector} from "hooks/useTypedSelector";
-import {Checkbox, Pagination, Table} from 'antd';
+import {Checkbox, Modal, Pagination, Table} from 'antd';
 import CountDown from "components/Timer/Timer";
 import { Card } from 'antd';
 import {Tab} from "@mui/material";
@@ -25,6 +25,20 @@ const Quiz: React.FC = () => {
         setTotalPage(questions.length/PAGE_SIZE)
         setMaxIndex(PAGE_SIZE)
     }, [])
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const showModal = () => {
+        setIsModalOpen(true);
+    };
+
+    const handleOk = () => {
+        setIsModalOpen(false);
+    };
+
+    const handleCancel = () => {
+        setIsModalOpen(false);
+    };
 
     const handleChange = (page: number) => {
         setCurrentPage(page)
@@ -102,6 +116,12 @@ const Quiz: React.FC = () => {
 
                 <CountDown hours={0} minutes={10} seconds={0} />
 
+                <Modal title="Результаты"  open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+
+                    <p> ТУТ БУДУТ РЕЗУЛЬТАТЫ </p>
+
+                </Modal>
+
                 {
                     questions?.length > PAGE_SIZE && (
                         <Pagination current={currentPage} pageSize={PAGE_SIZE} total={questions.length} onChange={handleChange}/>
@@ -111,10 +131,10 @@ const Quiz: React.FC = () => {
 
                 <div>
                     {questions.map(({id, question, choices, }, index) => index >= minIndex && index < maxIndex && (
-                        <Card key={question}>
+                        <Card key={id}>
                             <h2>{question}</h2>
                             {choices.map((value, index, array)=>
-                                <Checkbox title={question} disabled={disableCheckbox} checked={value===selected} key={value} value={value}   onChange={(e)=>{onChangeTest(value); changeHandler(e)}}>{value}</Checkbox>
+                                <Checkbox title={question}  disabled={disableCheckbox} checked={value===selected} key={value} value={value}   onChange={(e)=>{onChangeTest(value); changeHandler(e)}}>{value}</Checkbox>
                             )}
 
                         </Card>
@@ -136,7 +156,7 @@ const Quiz: React.FC = () => {
                 {/*</div>*/}
 
 
-                {/*<button onClick={(e)=>{changeHandler(e)}}>TEST</button>*/}
+                <button onClick={()=>{setDisable(true); showModal()} }>TEST</button>
 
 
 
