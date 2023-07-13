@@ -42,10 +42,14 @@ const Quiz: React.FC = () => {
     // console.log(common.length)
 
 
-    const [isChecked, setIsChecked] = useState(false);
-    const handleCheckboxChange = () => {
-        setIsChecked(!isChecked);
+    const [checked, setChecked] = useState(true);
+
+    function chengeCheckbox() {
+        setChecked(!checked);
     }
+
+    const [disableCheckbox, setDisable] = useState(false)
+
 
 
     const dispatch = useDispatch()
@@ -70,6 +74,14 @@ const Quiz: React.FC = () => {
 
     }
 
+    // const changeHandler = (e:any) => {
+    //     e.preventDefault()
+    //     dispatch({type:'ADD_TO_ANSWERS_LIST',payload:e.target.value })
+    //
+    // }
+
+
+
     // const result = () => {
     //     alert( `Колличество правильных ответов ${common.length}`)
     //     alert(`Колличество неправильных ответов ${correctAnswers.length - common.length}`)
@@ -77,6 +89,8 @@ const Quiz: React.FC = () => {
     // }
 
     // setTimeout(result, 600000)
+
+
 
 
     return (
@@ -100,7 +114,7 @@ const Quiz: React.FC = () => {
                         <Card key={question}>
                             <h2>{question}</h2>
                             {choices.map((value, index, array)=>
-                                <Checkbox title={question} checked={value===selected} key={index} value={value}   onChange={(e)=>{onChangeTest(value); changeHandler(e)}}>{value}</Checkbox>
+                                <Checkbox title={question} disabled={disableCheckbox} checked={value===selected} key={value} value={value}   onChange={(e)=>{onChangeTest(value); changeHandler(e)}}>{value}</Checkbox>
                             )}
 
                         </Card>
@@ -108,8 +122,21 @@ const Quiz: React.FC = () => {
 
                 </div>
 
+                {/*<div>*/}
+                {/*    {questions.map(({id, question, choices, }, index) => index >= minIndex && index < maxIndex && (*/}
+                {/*        <Card key={question}>*/}
+                {/*            <h2>{question}</h2>*/}
+                {/*            {choices.map((choice)=>*/}
+                {/*                <Checkbox title={question} disabled={disableCheckbox}    key={index} value={choices}   onChange={changeHandler}>{choice}</Checkbox>*/}
+                {/*            )}*/}
 
-                {/*<button onClick={result}>TEST</button>*/}
+                {/*        </Card>*/}
+                {/*    ))}*/}
+
+                {/*</div>*/}
+
+
+                {/*<button onClick={(e)=>{changeHandler(e)}}>TEST</button>*/}
 
 
 

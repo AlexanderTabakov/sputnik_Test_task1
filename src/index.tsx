@@ -28,10 +28,10 @@ const router = createBrowserRouter([
         path: "/quiz",
         element: <Quiz/>,
     },
-    {
-        path: "/user",
-        element: <Quiz/>,
-    },
+    // {
+    //     path: "/user",
+    //     element: <Quiz/>,
+    // },
 ]);
 
 // const root = (

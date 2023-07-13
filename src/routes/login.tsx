@@ -28,7 +28,7 @@ export default function Login() {
         try {
             let loginResponse = await signInUser(email, password);
             startSession(loginResponse.user);
-            navigate("/user");
+            navigate("/quiz");
         } catch (error) {
             console.error(error.message);
             setError(error.message);
