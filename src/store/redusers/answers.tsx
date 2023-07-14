@@ -14,7 +14,7 @@ export interface defaultState {
 const defaultState:defaultState = {
     selectedAnswers: [],
     correctAnswers: [],
-    correct:1,
+    correct:0,
     wrong:0
 };
 
@@ -40,6 +40,7 @@ export const addToAnswersList = (state = defaultState, action:any) => {
     case GET_CORRECT_ANSWERS_LIST:
         return {...state, correctAnswers: [...state.correctAnswers, action.payload]}
 
+
     case SHOW_RESULT:
         state.correct = 0;
         state.wrong = 0;
@@ -49,7 +50,9 @@ export const addToAnswersList = (state = defaultState, action:any) => {
             } else {
                 state.wrong++;
             }
+
         }); return {...state}
+
 
 
     case LOGOUT:

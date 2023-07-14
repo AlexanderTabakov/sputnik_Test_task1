@@ -56,14 +56,16 @@ const Quiz: React.FC = () => {
 
 
 
-    const correctAnswerCount = useTypedSelector(state => state.add.correct)
-    const wrongAnswerCount = useTypedSelector(state => state.add.wrong)
+    // const correctAnswerCount = useTypedSelector(state => state.add.correct)
+    // const wrongAnswerCount = useTypedSelector(state => state.add.wrong)
+    const selectedAnswers = useTypedSelector(state => state.add.selectedAnswers)
 
     const _ = require('LoDash');
 
-    // const common = _.intersection(answers, correctAnswers);
-    // console.log("The common elements are: " + common);
-    // console.log(common.length)
+    const correctAnswerCount = _.intersection(selectedAnswers, correctAnswers);
+    console.log("The common elements are: " + correctAnswerCount);
+    console.log(correctAnswerCount.length)
+    const wrongAnswerCount =  questions.length - correctAnswerCount.length
 
 
     const [testChecked, setChecked] = useState(false);
@@ -83,8 +85,8 @@ const Quiz: React.FC = () => {
 
     const [selected, setSelected] = useState(null);
 
-    function onChangeTest(choice:any) {
-        setSelected((prev:any) => (choice === prev ? null : choice));
+    function onChangeTest(value:any) {
+        setSelected((prev:any) => (value === prev ? null : value));
     }
 
 
@@ -97,10 +99,16 @@ const Quiz: React.FC = () => {
 
     }
 
-    const onChange = (checkedValues: CheckboxValueType[]) => {
-        console.log('checked = ', checkedValues);
-
-    };
+    // const testResult = 0;
+    // const testResultHandler = (e:any) => {
+    //     correctAnswers.forEach((answer:string, index) => {
+    //         if (answer === correctAnswers[index]) {
+    //             state.correct++;
+    //         } else {
+    //             state.wrong++;
+    //         }
+    //
+    // }
 
     // const changeHandler = (e:any) => {
     //
@@ -160,9 +168,9 @@ const Quiz: React.FC = () => {
                 <Modal title="Результаты"  open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
 
                     <h3>Правильных ответов</h3>
-                    <p> {correctAnswerCount} </p>
+                    <p> {correctAnswerCount.length} </p>
                     <h3>Неправильных ответов</h3>
-                    <p> {correctAnswerCount} </p>
+                    <p> {wrongAnswerCount} </p>
 
                 </Modal>
 
@@ -177,8 +185,8 @@ const Quiz: React.FC = () => {
                     {questions.map(({id, question, choices, }, index) => index >= minIndex && index < maxIndex && (
                         <Card key={id}>
                             <h2>{question}</h2>
-                            {choices.map((choice)=>
-                                <Checkbox title={question}  disabled={disableCheckbox} checked={choice===selected} key={choice} value={choice}   onChange={(e)=>{onChangeTest(choice); changeHandler(e)}}>{choice}</Checkbox>
+                            {choices.map((value)=>
+                                <Checkbox title={question}  disabled={disableCheckbox}  name={value}  key={value} value={value}   onChange={(e)=>{onChangeTest(e); changeHandler(e)}}>{value}</Checkbox>
                             )}
 
                         </Card>
