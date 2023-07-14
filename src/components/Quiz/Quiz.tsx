@@ -5,12 +5,14 @@ import {useTypedSelector} from "hooks/useTypedSelector";
 import {Checkbox, Modal, Pagination, Table} from 'antd';
 import CountDown from "components/Timer/Timer";
 import { Card } from 'antd';
+import type { CheckboxValueType } from 'antd/es/checkbox/Group';
 import {Tab} from "@mui/material";
 import Auth from "components/Auth/Auth";
 import questions from "db/questions";
 import {correctAnswers} from "db/correctAnswers";
 import Chekbox from "components/CheckBox/Chekbox";
 import User from "routes/user";
+import CheckboxesAntd from "components/CheckBox/Chekbox";
 
 
 const Quiz: React.FC = () => {
@@ -25,6 +27,12 @@ const Quiz: React.FC = () => {
         setTotalPage(questions.length/PAGE_SIZE)
         setMaxIndex(PAGE_SIZE)
     }, [])
+
+    useEffect(() => {
+        const correctAnswers = questions.map((question) => question.answer);
+        dispatch({type:'GET_CORRECT_ANSWERS_LIST', payload:correctAnswers});
+    }, []);
+
 
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -56,10 +64,10 @@ const Quiz: React.FC = () => {
     // console.log(common.length)
 
 
-    const [checked, setChecked] = useState(true);
+    const [testChecked, setChecked] = useState(false);
 
     function chengeCheckbox() {
-        setChecked(!checked);
+        setChecked(!testChecked);
     }
 
     const [disableCheckbox, setDisable] = useState(false)
@@ -67,19 +75,18 @@ const Quiz: React.FC = () => {
 
 
     const dispatch = useDispatch()
-    const answers = useSelector((state: any) => state.answer)
+    const answers = useSelector((state: any) => state.slectedAnswer)
 
 
 
     const [selected, setSelected] = useState(null);
 
-    function onChangeTest(value:any) {
-        setSelected((prev:any) => (value === prev ? null : value));
+    function onChangeTest(choice:any) {
+        setSelected((prev:any) => (choice === prev ? null : choice));
     }
 
 
     const changeHandler = (e:any) => {
-        e.preventDefault()
         if(!e.target.checked){
             dispatch({type:"REMOVE_FROM_ANSWERS_LIST",payload:e.target.value})
             return
@@ -87,6 +94,30 @@ const Quiz: React.FC = () => {
         dispatch({type:'ADD_TO_ANSWERS_LIST',payload:e.target.value })
 
     }
+
+    const onChange = (checkedValues: CheckboxValueType[]) => {
+        console.log('checked = ', checkedValues);
+
+    };
+
+    // const changeHandler = (e:any) => {
+    //
+    //     const selectedAnswers:any = []
+    //     if(!e.target.checked){
+    //         selectedAnswers.push(e.target.value)
+    //     }
+    //
+    //     console.log(selectedAnswers)
+    // }
+
+
+
+
+    // const toReduxTest = () => {
+    //     dispatch({type:'ADD_TO_ANSWERS_LIST', payload:checkedValues})
+    // }
+
+
 
     // const changeHandler = (e:any) => {
     //     e.preventDefault()
@@ -103,6 +134,7 @@ const Quiz: React.FC = () => {
     // }
 
     // setTimeout(result, 600000)
+
 
 
 
@@ -133,8 +165,8 @@ const Quiz: React.FC = () => {
                     {questions.map(({id, question, choices, }, index) => index >= minIndex && index < maxIndex && (
                         <Card key={id}>
                             <h2>{question}</h2>
-                            {choices.map((value, index, array)=>
-                                <Checkbox title={question}  disabled={disableCheckbox} checked={value===selected} key={value} value={value}   onChange={(e)=>{onChangeTest(value); changeHandler(e)}}>{value}</Checkbox>
+                            {choices.map((choice)=>
+                                <Checkbox title={question}  disabled={disableCheckbox} checked={choice===selected} key={choice} value={choice}   onChange={(e)=>{onChangeTest(choice); changeHandler(e)}}>{choice}</Checkbox>
                             )}
 
                         </Card>
@@ -142,18 +174,20 @@ const Quiz: React.FC = () => {
 
                 </div>
 
+
                 {/*<div>*/}
                 {/*    {questions.map(({id, question, choices, }, index) => index >= minIndex && index < maxIndex && (*/}
-                {/*        <Card key={question}>*/}
+                {/*        <Card key={id}>*/}
                 {/*            <h2>{question}</h2>*/}
-                {/*            {choices.map((choice)=>*/}
-                {/*                <Checkbox title={question} disabled={disableCheckbox}    key={index} value={choices}   onChange={changeHandler}>{choice}</Checkbox>*/}
-                {/*            )}*/}
-
+                {/*            <Checkbox.Group options={choices} onChange={onChange}>*/}
+                {/*                <Checkbox  onChange={(e)=>{onChangeTest(id)}}></Checkbox>*/}
+                {/*            </Checkbox.Group>*/}
                 {/*        </Card>*/}
                 {/*    ))}*/}
 
                 {/*</div>*/}
+
+
 
 
                 <button onClick={()=>{setDisable(true); showModal()} }>TEST</button>
