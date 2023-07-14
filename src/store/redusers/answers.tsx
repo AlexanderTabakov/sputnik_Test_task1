@@ -41,6 +41,7 @@ export const addToAnswersList = (state = defaultState, action:any) => {
                 state.wrong++;
             }
         }); return {...state}
+
     // case REMOVE_FROM_ANSWERS_LIST:
     //     return {
     //         ...state,

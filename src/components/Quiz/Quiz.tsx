@@ -59,6 +59,9 @@ const Quiz: React.FC = () => {
 
     const _ = require('LoDash');
 
+    const correctAnswerCount = useTypedSelector(state => state.add.correct)
+    const wrongAnswerCount = useTypedSelector(state => state.add.wrong)
+
     // const common = _.intersection(answers, correctAnswers);
     // console.log("The common elements are: " + common);
     // console.log(common.length)
@@ -135,6 +138,11 @@ const Quiz: React.FC = () => {
 
     // setTimeout(result, 600000)
 
+    const finish = () => {
+        setDisable(true)
+        showModal()
+    }
+
 
 
 
@@ -150,7 +158,10 @@ const Quiz: React.FC = () => {
 
                 <Modal title="Результаты"  open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
 
-                    <p> ТУТ БУДУТ РЕЗУЛЬТАТЫ </p>
+                    <h3>Правильных ответов</h3>
+                    <p> {correctAnswerCount} </p>
+                    <h3>Неправильных ответов</h3>
+                    <p> {correctAnswerCount} </p>
 
                 </Modal>
 
@@ -190,7 +201,7 @@ const Quiz: React.FC = () => {
 
 
 
-                <button onClick={()=>{setDisable(true); showModal()} }>TEST</button>
+                <button onClick={()=>{finish()} }>TEST</button>
 
 
 
