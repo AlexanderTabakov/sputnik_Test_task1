@@ -3,7 +3,7 @@
 export interface defaultState {
     selectedAnswers: []
     answerId?: number
-    correctAnswer?:[]
+    correctAnswers?:[]
     wrongAnswer?: any
     correct:0
     wrong:0
@@ -13,10 +13,11 @@ export interface defaultState {
 
 const defaultState:defaultState = {
     selectedAnswers: [],
-    correctAnswer: [],
+    correctAnswers: [],
     correct:0,
     wrong:0
 };
+
 
 export const addToAnswersList = (state = defaultState, action:any) => {
 
@@ -29,24 +30,28 @@ export const addToAnswersList = (state = defaultState, action:any) => {
     switch (action.type) {
     case ADD_TO_ANSWERS_LIST:
         return {...state, selectedAnswers: [...state.selectedAnswers, action.payload]}
+
+    case REMOVE_FROM_ANSWERS_LIST:
+        return {
+            ...state,
+            selectedAnswers:state.selectedAnswers.filter(e => e !== action.payload)
+        }
+
     case GET_CORRECT_ANSWERS_LIST:
-        return {...state, correctAnswer: [...state.correctAnswer, action.payload]}
+        return {...state, correctAnswers: [...state.correctAnswers, action.payload]}
+
     case SHOW_RESULT:
         state.correct = 0;
         state.wrong = 0;
-        state.correctAnswer.forEach((answer, index) => {
-            if (answer === state.selectedAnswers[index]) {
+        state.selectedAnswers.forEach((answer, index) => {
+            if (answer === state.correctAnswers[index]) {
                 state.correct++;
             } else {
                 state.wrong++;
             }
         }); return {...state}
 
-    // case REMOVE_FROM_ANSWERS_LIST:
-    //     return {
-    //         ...state,
-    //         answers:state.answers.filter(e => e !== action.payload)
-    //     }
+
     case LOGOUT:
         return defaultState
     default:

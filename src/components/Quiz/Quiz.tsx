@@ -54,13 +54,12 @@ const Quiz: React.FC = () => {
         setMaxIndex(page*PAGE_SIZE)
     }
 
-    // const {answers} = useTypedSelector(state => state.add)
-    // console.log(answers)
 
-    const _ = require('LoDash');
 
     const correctAnswerCount = useTypedSelector(state => state.add.correct)
     const wrongAnswerCount = useTypedSelector(state => state.add.wrong)
+
+    const _ = require('LoDash');
 
     // const common = _.intersection(answers, correctAnswers);
     // console.log("The common elements are: " + common);
@@ -142,6 +141,8 @@ const Quiz: React.FC = () => {
         setDisable(true)
         showModal()
     }
+
+    setTimeout(finish, 600000)
 
 
 
