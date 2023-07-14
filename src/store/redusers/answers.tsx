@@ -5,8 +5,8 @@ export interface defaultState {
     answerId?: number
     correctAnswers?:[]
     wrongAnswer?: any
-    correct:0
-    wrong:0
+    correct:number
+    wrong:number
 }
 
 
@@ -14,7 +14,7 @@ export interface defaultState {
 const defaultState:defaultState = {
     selectedAnswers: [],
     correctAnswers: [],
-    correct:0,
+    correct:1,
     wrong:0
 };
 
@@ -43,7 +43,7 @@ export const addToAnswersList = (state = defaultState, action:any) => {
     case SHOW_RESULT:
         state.correct = 0;
         state.wrong = 0;
-        state.selectedAnswers.forEach((answer, index) => {
+        state.selectedAnswers.forEach((answer:string, index) => {
             if (answer === state.correctAnswers[index]) {
                 state.correct++;
             } else {

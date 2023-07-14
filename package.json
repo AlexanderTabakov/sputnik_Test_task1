@@ -1,5 +1,6 @@
 {
   "name": "cinema-quiz",
+  "homepage": "https://github.com/AlexanderTabakov/sputnik_Test_task1",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,6 +9,8 @@
     "build:prod": "webpack --env mode=production",
     "build:dev": "webpack --env mode=development",
     "lint:ts": "eslint \"**/*.{ts,tsx}\"",
+    "predeploy": "npm run build:dev",
+    "deploy": "gh-pages -d build",
     "jsServer": "json-server --watch db.json --port 3004 -m ./node_modules/json-server-auth",
     "lint:ts:fix": "eslint \"**/*.{ts,tsx}\" --fix"
   },
@@ -31,6 +34,7 @@
     "eslint": "^8.41.0",
     "eslint-plugin-react": "^7.32.2",
     "file-loader": "^6.2.0",
+    "gh-pages": "^5.0.0",
     "html-webpack-plugin": "^5.5.0",
     "json-server": "^0.17.3",
     "json-server-auth": "^2.1.0",
