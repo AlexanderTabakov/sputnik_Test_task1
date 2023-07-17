@@ -1,10 +1,7 @@
 import React, {useState} from "react";
-import Chk2 from "components/CheckBox/Chkx2";
 import {useDispatch, useSelector} from "react-redux";
 import {addToAnswersList} from "store/redusers/answers";
 import {Checkbox,Card} from "antd";
-import Chekbox from "components/CheckBox/Chekbox";
-import Questions from "db/questions";
 
 // interface Props {
 //     question: string;

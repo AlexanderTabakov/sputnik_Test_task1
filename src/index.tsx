@@ -2,14 +2,14 @@ import React from "react";
 import ReactDOM from 'react-dom'
 import {Provider} from "react-redux";
 import {store} from "store";
-import {createBrowserRouter, Navigate, RouterProvider} from "react-router-dom";
+import {createHashRouter, Navigate, RouterProvider} from "react-router-dom";
 import Login from "./routes/login";
 import Register from "./routes/register";
 import QuizPage from "pages/QuizPage/QuizPage";
 import NotFoundPage from "pages/NotFoundPage/NotFoundPage";
 
 
-const router = createBrowserRouter([
+const router = createHashRouter([
     {
         path: "/",
         element: <Navigate to="login"/>,
