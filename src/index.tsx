@@ -1,14 +1,12 @@
 import React from "react";
-
 import ReactDOM from 'react-dom'
-import {BrowserRouter} from "react-router-dom";
-import Quiz from "components/Quiz/Quiz";
 import {Provider} from "react-redux";
 import {store} from "store";
 import {createBrowserRouter, Navigate, RouterProvider} from "react-router-dom";
 import Login from "./routes/login";
 import Register from "./routes/register";
-import User from "./routes/user";
+import QuizPage from "pages/QuizPage/QuizPage";
+import NotFoundPage from "pages/NotFoundPage/NotFoundPage";
 
 
 const router = createBrowserRouter([
@@ -25,22 +23,16 @@ const router = createBrowserRouter([
         element: <Register/>,
     },
     {
-        path: "/quiz",
-        element: <Quiz/>,
+        path: "/QuizPage",
+        element: <QuizPage/>,
     },
-    // {
-    //     path: "/user",
-    //     element: <Quiz/>,
-    // },
+    {
+        path: '*',
+        element: <NotFoundPage/>,
+    },
 ]);
 
-// const root = (
-//     <BrowserRouter>
-//         <Provider store={store}>
-//             <Quiz/>
-//         </Provider>
-//     </BrowserRouter>
-// )
+
 
 const root =
 (

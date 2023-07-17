@@ -2,8 +2,8 @@ import {Alert, Box, Button, Container, Link, TextField, Typography} from "@mui/m
 import {useNavigate} from "react-router-dom";
 import {useState} from "react";
 import {  Modal } from 'antd';
-import {signInUser} from "../firebase";
-import {startSession} from "../storage/session";
+import {signInUser} from "firebase";
+import {startSession} from "storage/session";
 
 export default function Login() {
 
@@ -43,7 +43,7 @@ export default function Login() {
         try {
             const loginResponse = await signInUser(email, password);
             startSession(loginResponse.user);
-            navigate("/quiz");
+            navigate("/QuizPage");
         } catch (error) {
             console.error(error.message);
             setError(error.message);

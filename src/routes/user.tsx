@@ -1,13 +1,12 @@
 import {Button, Container, Typography} from "@mui/material";
 import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
-import {endSession, getSession, isLoggedIn} from "../storage/session";
-import {useDispatch, useSelector} from "react-redux";
-import {addToAnswersList} from "store/redusers/answers";
+import {endSession, getSession, isLoggedIn} from "storage/session";
+import {useDispatch} from "react-redux";
 
 export default function User() {
 
-    let navigate = useNavigate();
+    const navigate = useNavigate();
 
     const [email, setEmail] = useState("");
 
@@ -23,10 +22,9 @@ export default function User() {
             navigate("/login");
         }
 
-        let session = getSession();
+        const session = getSession();
         setEmail(session.email);
 
-        console.log("Your access token is: " + session.accessToken);
     }, [navigate]);
 
     const onLogout = () => {

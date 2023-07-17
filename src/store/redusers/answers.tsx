@@ -1,6 +1,6 @@
 // import {UNCHECK} from "store/redusers/testReducer";
 
-export interface defaultState {
+export interface IdefaultState {
     selectedAnswers: []
     answerId?: number
     correctAnswers?:[]
@@ -11,7 +11,7 @@ export interface defaultState {
 
 
 
-const defaultState:defaultState = {
+const defaultState:IdefaultState = {
     selectedAnswers: [],
     correctAnswers: [],
     correct:0,
